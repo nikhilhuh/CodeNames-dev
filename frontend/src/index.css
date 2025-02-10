@@ -1,0 +1,25 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+.typewriter {
+  display: inline-block;
+  overflow: hidden;
+  white-space: pre-wrap; /* Allow text wrapping */
+  word-break: normal;
+}
+
+.typewriter span {
+  display: inline-block;
+  opacity: 0;
+  animation: fadeIn 0.05s linear forwards;
+}
+
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+  }
+  to {
+    opacity: 1;
+  }
+}
