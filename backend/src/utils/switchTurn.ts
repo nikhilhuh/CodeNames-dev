@@ -27,11 +27,5 @@ export const switchTurn = (room: Room, card: Card) => {
     room.clueGiven = false;
     room.clue = null;
     room.guessedWords = 0;
-    if (card.color === "black") {
-      room.winner = {
-        team: room.turn === "red" ? "blue" : "red",
-        way: "assassin",
-      };
-    }
   }
 };

@@ -42,7 +42,7 @@ const Card: React.FC<CardProps> = ({ card, setError }) => {
       !PlayerDetails.team ||
       PlayerDetails.role === "spymaster" ||
       PlayerDetails.team !== room.turn ||
-      !room.clueGiven
+      !room.clueGiven || room.winner !== null
     )
       return;
 
@@ -59,7 +59,7 @@ const Card: React.FC<CardProps> = ({ card, setError }) => {
       !PlayerDetails.team ||
       PlayerDetails.role === "spymaster" ||
       PlayerDetails.team !== room.turn ||
-      !room.clueGiven
+      !room.clueGiven || room.winner !== null
     )
       return;
 
@@ -112,7 +112,7 @@ const Card: React.FC<CardProps> = ({ card, setError }) => {
         {PlayerDetails.role === "operative" &&
           PlayerDetails.team === room.turn &&
           room.clueGiven &&
-          !card.revealed && (
+          !card.revealed && room.winner === null && (
             <div
               onClick={handleCardReveal}
               className="absolute top-[2%] right-[2%] p-1 z-10 bg-yellow-400 rounded-full shadow-lg cursor-pointer"
@@ -124,8 +124,8 @@ const Card: React.FC<CardProps> = ({ card, setError }) => {
         {!card.revealed && (
           <div
             className={`absolute top-[59%] mobile-m:top-[60%] mobile-l:top-[61%] left-1/2 transform -translate-x-1/2 flex items-center justify-center text-center uppercase
-            text-[0.4rem] laptop-sm:text-[0.6rem] laptop-l:text-[0.8rem] 4k:text-[1.4rem] font-bold ${
-              card.color === "black" && PlayerDetails?.role === "spymaster"
+            text-[2vw] tablet:text-[1vw] font-bold ${
+              card.color === "black" &&  ( PlayerDetails?.role === "spymaster" || room.winner )
                 ? "text-white"
                 : "text-black"
             }`}

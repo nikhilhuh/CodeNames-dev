@@ -10,7 +10,9 @@ const App: React.FC = () => {
 
   useEffect(() => {
     if (room) {
-      if (room.turn === "blue") setBackground("bg-blue-500");
+      if(room.winner?.team === "red") setBackground("bg-red-800"); 
+      else if (room.winner?.team === "blue") setBackground("bg-blue-500");
+      else if (room.turn === "blue") setBackground("bg-blue-500");
       else setBackground("bg-red-800");
     }
   }, [room]);

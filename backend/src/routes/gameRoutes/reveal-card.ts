@@ -73,18 +73,18 @@ router.post("/reveal-card", (req: Request, res: Response) => {
 
   // Decrease the words count if card is red or blue
   wordsRemaining(room, card);
+
+  // winning condition check
+  checkWinner(room , card);
   // Handle turn switching logic
   switchTurn(room, card);
 
   io.to(roomId).emit("reveal-card", roomId);
 
-  // winning condition check
-  checkWinner(room);
-
   // if there is any winner emit game-over
   if (room.winner) {
     room.gameLog.push({
-      log: `${room.winner.team} Team Wins`,
+      log: `${room.winner.team === "red"? "Red" : "Blue"} Team Wins`,
       turn: room.winner.team,
     });
     io.to(roomId).emit("game-over", roomId);

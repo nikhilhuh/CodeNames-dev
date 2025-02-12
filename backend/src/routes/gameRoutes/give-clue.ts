@@ -22,6 +22,11 @@ router.post("/give-clue", (req: Request, res: Response) => {
     return;
   }
 
+  if(room.winner){
+    res.status(403).json({success: false, message: "Game is already over" });
+    return;
+  }
+
   const player = room.players.find((p) => p.nickname === nickname);
   if (!player || player.role !== "spymaster" || player.team !== room.turn) {
     res

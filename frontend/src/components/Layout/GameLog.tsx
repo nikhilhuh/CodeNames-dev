@@ -14,15 +14,15 @@ const GameLog: React.FC = () => {
   if (!room) return <></>;
 
   return (
-    <div className=" bg-white bg-opacity-75 tablet:rounded-xl tablet:min-h-[45vh]">
+    <div className=" bg-white bg-opacity-75 tablet:rounded-xl tablet:min-h-[45vh] overflow-hidden pb-[2px]">
       <div className="text-center font-semibold text-[2.5vw] tablet:text-[1vw] font-sans">
         Game Log
       </div>
-      <div className="flex flex-col gap-[2px] px-[1px] tablet:px-1 mt-[2px]">
+      <div className="flex flex-col gap-[2px] px-[1px] tablet:px-1 mt-[2px] overflow-y-auto">
         {gameLogs?.map((log, index) => (
           <div
             key={index}
-            className={`flex justify-start items-center px-1 py-[2px] tablet:p-1 gap-[2px] tablet:gap-1 text-[1.5vw] tablet:text-[0.9vw]  ${
+            className={`flex ${log.nickname? "justify-start" : "justify-center"} items-center px-1 py-[2px] tablet:p-1 gap-[2px] tablet:gap-1 text-[1.5vw] tablet:text-[0.9vw]  ${
               log.turn === "red" ? "bg-red-300" : "bg-blue-300"
             }`}
           >
@@ -36,7 +36,7 @@ const GameLog: React.FC = () => {
               </span>
             )}
 
-            <span className="text-[1.2vw] tablet:text-[0.8vw]">{log.log}</span>
+            <span className={`text-[1.2vw] tablet:text-[0.8vw]`}>{log.log}</span>
             {log.clue && (
               <span className="font-semibold bg-gray-300 p-1 rounded-sm">
                 {log.clue.clueWord} {log.clue.clueNumber}

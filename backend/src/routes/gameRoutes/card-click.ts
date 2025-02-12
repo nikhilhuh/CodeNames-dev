@@ -23,6 +23,11 @@ router.post("/card-click", (req: Request, res: Response) => {
     return;
   }
 
+  if(room.winner){
+    res.status(403).json({success: false, message: "Game is already over" });
+    return;
+  }
+
   const player = room.players.find((p) => p.nickname === nickname);
   if (!player) {
     res.status(400).json({ success: false, message: "Player not found" });

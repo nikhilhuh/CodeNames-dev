@@ -7,9 +7,9 @@ export default {
   theme: {
     screens: {
       'mobile-m': '330px',
-      'mobile-l': '385px',
+      'mobile-l': '380px',
       'mobile-tablet' : '440px',
-      'tablet': '550px',
+      'tablet': '510px',
       'laptop-sm': '770px',
       'laptop-l': '1030px',
       '4k': '1800px'

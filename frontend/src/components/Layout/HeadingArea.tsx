@@ -14,7 +14,7 @@ const HeadingArea: React.FC = () => {
 
   let heading = "";
   if (winner) {
-    heading = `${winner.team === "red" ? "Red" : "Blue"} Team Wins.`;
+    heading = `${winner.team === "red" ? "Red" : "Blue"} Team Wins!`;
   } else if (!clueGiven) {
     if (role === null && team === null) {
       heading = `${
@@ -56,7 +56,7 @@ const HeadingArea: React.FC = () => {
 
   return (
     <div className="flex bg-transparent justify-center items-center">
-      <div className="bg-white shadow-md text-black rounded-lg laptop-l:rounded-xl max-w-[95vw] tablet:max-w-[60vw] text-[2.5vw] tablet:text-[1.5vw] px-2 py-1 laptop-l:px-4 4k:py-2 text-center overflow-hidden">
+      <div className="bg-white shadow-md text-black rounded-lg laptop-l:rounded-xl max-w-[95vw] tablet:max-w-[60vw] text-[2.5vw] tablet:text-[1vw] px-2 py-1 text-center overflow-hidden">
         <span key={key} className="typewriter font-semibold">
           {displayedText.split("").map((char, index) => (
             <span key={index} style={{ animationDelay: `${index * 50}ms` }}>

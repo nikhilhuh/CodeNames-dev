@@ -3,6 +3,9 @@ import { IoIosRefresh } from "react-icons/io";
 import { usePlayer } from "../../context/PlayerContext";
 import { resetGame } from "../../services/api/apiCalls/resetGame";
 import { useRoom } from "../../context/RoomContext";
+import { useState } from "react";
+import PlayersDropdown from "../Dropdowns/PlayersDropdown";
+import PlayerDropdown from "../Dropdowns/PlayerDropdown";
 
 interface TopOptionsBarProps {
   handleRulesClick: () => void;
@@ -15,45 +18,35 @@ const TopOptionsBar: React.FC<TopOptionsBarProps> = ({
   setInfo,
 }) => {
   const { PlayerDetails } = usePlayer();
-  const { room , roomId } = useRoom();
-  
-  if (!roomId || !PlayerDetails || !room) return <></>;
+  const { room, roomId } = useRoom();
+  const [playersDropdown, setPlayersDropdown] = useState<boolean>(false);
+  const [playerDropdown, setPlayerDropdown] = useState<boolean>(false);
 
-  const handleRoomIdCopy = () => {
-    if (roomId) {
-      navigator.clipboard
-        .writeText(roomId)
-        .then(() => {
-          setInfo("Room ID copied to clipboard!");
-        })
-        .catch(() => {
-          setInfo("Failed to copy Room ID");
-        });
-      setShowInfoModal(true);
-    }
-  };
+  if (!roomId || !PlayerDetails || !room) return <></>;
 
   const handleResetGame = async () => {
     await resetGame(roomId, PlayerDetails.nickname);
   };
 
+  const playersClick = () => {
+    setPlayersDropdown((prev) => !prev);
+  };
+  const playerClick = () => {
+    setPlayerDropdown((prev) => !prev);
+  };
+
   return (
     <div className="w-full bg-transparent">
-      <div className="flex justify-between items-center font-semibold text-[2.3vw] tablet:text-[1.2vw]">
+      <div className="flex justify-between items-center font-semibold text-[2.3vw] tablet:text-[1vw]">
         <div className="flex 4k:gap-4 gap-1 laptop-l:gap-2 items-center">
           <button
+            onClick={playersClick}
             title="Players in Room"
-            className="flex gap-1 tablet:gap-2 items-center laptop-sm:px-4 laptop-sm:py-2 p-2 bg-yellow-400 rounded-full shadow-md"
+            className="relative flex gap-1 tablet:gap-2 items-center p-2 bg-yellow-400 rounded-full shadow-md"
           >
-            <span className="hidden tablet:inline-block">Players</span> <FaUser />{" "}
-            {room?.players?.length}
-          </button>
-          <button
-            onClick={handleRoomIdCopy}
-            title="Room Id"
-            className="flex gap-2 items-center laptop-sm:px-4 laptop-sm:py-2 p-2 bg-yellow-400 rounded-full shadow-md font-semibold"
-          >
-            {roomId}
+            <span className="hidden tablet:inline-block">Players</span>{" "}
+            <FaUser /> {room?.players?.length}
+            {playersDropdown && <PlayersDropdown />}
           </button>
         </div>
         <div className="flex 4k:gap-4 gap-1 laptop-l:gap-2 items-center">
@@ -61,7 +54,7 @@ const TopOptionsBar: React.FC<TopOptionsBarProps> = ({
             <button
               title="Reset Board"
               onClick={handleResetGame}
-              className="flex gap-2 items-center laptop-sm:px-4 laptop-sm:py-2 p-2 bg-yellow-400 rounded-full shadow-md"
+              className="flex gap-2 items-center p-2 bg-yellow-400 rounded-full shadow-md"
             >
               {" "}
               <IoIosRefresh />{" "}
@@ -71,15 +64,17 @@ const TopOptionsBar: React.FC<TopOptionsBarProps> = ({
           <button
             title="Game Rules"
             onClick={handleRulesClick}
-            className="flex gap-2 items-center laptop-sm:px-4 laptop-sm:py-2 p-2 bg-yellow-400 rounded-full shadow-md"
+            className="flex gap-2 items-center p-2 bg-yellow-400 rounded-full shadow-md"
           >
             Rules
           </button>
           <button
+            onClick={playerClick}
             title="You Nickname"
-            className="flex gap-2 items-center laptop-sm:px-4 laptop-sm:py-2 p-2 bg-orange-400 rounded-full shadow-md font-semibold"
+            className="relative flex gap-2 items-center p-2 bg-orange-400 rounded-full shadow-md font-semibold"
           >
             {PlayerDetails.nickname}
+            {playerDropdown && <PlayerDropdown/>}
           </button>
         </div>
       </div>

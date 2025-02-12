@@ -69,23 +69,22 @@ const MainGamePage = () => {
         </div>
 
         {/* Desktop Layout */}
-        <div className="hidden tablet:grid grid-cols-[1fr_3fr_1fr] gap-2 laptop-l:gap-3 4k:gap-4 p-1 flex-1">
+        <div className="hidden tablet:grid grid-cols-[1fr_3fr_1fr] gap-2 laptop-l:gap-3 4k:gap-4 p-1">
           {/* Left Column */}
           <div className="flex flex-col tablet:gap-6 4k:gap-10">
-              <RedTeam />
+            <RedTeam />
             <Developer />
           </div>
 
           {/* Center Column (Takes most width) */}
-          <div className="w-full flex flex-col tablet:gap-2 laptop-sm:gap-4 4k:gap-8">
+          <div className="w-full flex flex-col  tablet:gap-2 laptop-sm:gap-4 4k:gap-8">            
             <CardGrid setError={setError} />
             {room?.winner ? <WinnerInfo /> : <ClueArea />}
           </div>
 
           {/* Right Column */}
           <div className="flex flex-col tablet:gap-6 4k:gap-10">
-              <BlueTeam />
-           
+            <BlueTeam />
             <GameLog />
           </div>
         </div>
