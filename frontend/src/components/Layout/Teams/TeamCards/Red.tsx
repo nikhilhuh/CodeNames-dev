@@ -1,14 +1,14 @@
 import React, { useEffect, useState } from "react";
-import RedImg1 from "../../../../assets/images/Red/Red1.png";
-import RedImg2 from "../../../../assets/images/Red/Red2.png";
-import RedImg3 from "../../../../assets/images/Red/Red3.png";
-import RedImg4 from "../../../../assets/images/Red/Red4.png";
-import RedImg5 from "../../../../assets/images/Red/Red5.png";
-import RedImg6 from "../../../../assets/images/Red/Red6.png";
-import RedImg7 from "../../../../assets/images/Red/Red7.png";
-import RedImg8 from "../../../../assets/images/Red/Red8.png";
-import RedImg9 from "../../../../assets/images/Red/Red9.png";
-import RedImgBack from "../../../../assets/images/Red/Red-back.png";
+import RedImg1 from "../../../../assets/images/red/red1.png";
+import RedImg2 from "../../../../assets/images/red/red2.png";
+import RedImg3 from "../../../../assets/images/red/red3.png";
+import RedImg4 from "../../../../assets/images/red/red4.png";
+import RedImg5 from "../../../../assets/images/red/red5.png";
+import RedImg6 from "../../../../assets/images/red/red6.png";
+import RedImg7 from "../../../../assets/images/red/red7.png";
+import RedImg8 from "../../../../assets/images/red/red8.png";
+import RedImg9 from "../../../../assets/images/red/red9.png";
+import RedImgBack from "../../../../assets/images/red/red-back.png";
 
 const RedFront = [
   RedImg1,
