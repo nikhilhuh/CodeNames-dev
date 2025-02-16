@@ -17,7 +17,7 @@ const RedTeam: React.FC = () => {
   const handleJoin = async (chosenRole: Player["role"]) => {
     if (roomId) {
       try {
-        const response = await updatePlayerDetails(
+         await updatePlayerDetails(
           roomId,
           PlayerDetails?.nickname || "",
           chosenRole,

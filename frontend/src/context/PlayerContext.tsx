@@ -33,7 +33,7 @@ interface PlayerProviderProps {
 }
 
 export const PlayerProvider = ({ children }: PlayerProviderProps) => {
-  const [nickname, setNickname] = useState<string | null>(null);
+  const [, setNickname] = useState<string | null>(null);
   const [PlayerDetails, setPlayerDetails] = useState<Player | null>(null);
   const { room } = useRoom();
 
