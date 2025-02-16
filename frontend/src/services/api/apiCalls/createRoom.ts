@@ -1,7 +1,7 @@
 import { getRoomDetails } from "./getRoomDetails";
 import { axiosInstance } from "../../axiosInstance";
 import socket from "../../socketSetup";
-import { updateSessionStorage } from "../../updateSessionStorage";
+import { updateLocalStorage } from "../../updateLocalStorage";
 import { apiErrorHandler } from "../apiErrorHandling";
 import { Player } from "../../../utils/constants";
 
@@ -10,8 +10,8 @@ export const createRoom = async (nickname: Player["nickname"]) => {
     const response = await axiosInstance.post("/create-room", { nickname });
     const { roomId } = response.data;
 
-    updateSessionStorage("nickname", nickname);
-    updateSessionStorage("roomId", roomId);
+    updateLocalStorage("nickname", nickname);
+    updateLocalStorage("roomId", roomId);
     socket.emit("create-room", roomId);
 
     // Fetch room details and ensure it's not undefined
@@ -22,7 +22,7 @@ export const createRoom = async (nickname: Player["nickname"]) => {
     }
 
     if ("room" in roomResponse) {
-      updateSessionStorage("roomDetails", roomResponse.room);
+      updateLocalStorage("roomDetails", roomResponse.room);
       return { success: true, message: "Completed", roomId };
     } else {
       return {

@@ -3,19 +3,15 @@ import Card from "./Card";
 import { wordCard } from "../../utils/constants";
 import { useRoom } from "../../context/RoomContext";
 
-interface CardGridProps {
-  setError: React.Dispatch<React.SetStateAction<string>>;
-}
-
-const CardGrid: React.FC<CardGridProps> = ({ setError}) => {
+const CardGrid: React.FC = () => {
   const { room } = useRoom();
 
   if (!room) return <></>;
 
   return (
-    <div className="grid grid-cols-5 gap-[1px]">
+    <div className="grid grid-cols-5 gap-[2px] w-full h-full">
       {room.board.map((card: wordCard, index: number) => (
-        <Card key={`${index}`} card={card} setError={setError}/>
+        <Card key={`${index}`} card={card} />
       ))}
     </div>
   );

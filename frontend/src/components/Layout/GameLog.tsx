@@ -4,7 +4,6 @@ import { gamelog } from "../../utils/constants";
 
 const GameLog: React.FC = () => {
   const { room } = useRoom();
-
   const [gameLogs, setGameLogs] = useState<gamelog[]>([]);
 
   useEffect(() => {
@@ -14,15 +13,20 @@ const GameLog: React.FC = () => {
   if (!room) return <></>;
 
   return (
-    <div className=" bg-white bg-opacity-75 tablet:rounded-xl tablet:min-h-[45vh] overflow-hidden pb-[2px]">
+    <div className="bg-white bg-opacity-75 tablet:rounded-xl h-full pb-[2px] flex flex-col pt-[2px]">
+      {/* Fixed Heading */}
       <div className="text-center font-semibold text-[2.5vw] tablet:text-[1vw] font-sans">
         Game Log
       </div>
-      <div className="flex flex-col gap-[2px] px-[1px] tablet:px-1 mt-[2px] overflow-y-auto">
+
+      {/* Scrollable Logs Container */}
+      <div className="flex flex-col gap-[2px] tablet:px-[0.1vw] mt-[2px] overflow-y-auto flex-1">
         {gameLogs?.map((log, index) => (
           <div
             key={index}
-            className={`flex ${log.nickname? "justify-start" : "justify-center"} items-center px-1 py-[2px] tablet:p-1 gap-[2px] tablet:gap-1 text-[1.5vw] tablet:text-[0.9vw]  ${
+            className={`flex ${
+              log.nickname ? "justify-start" : "justify-center"
+            } items-baseline px-[1vw] py-[0.8vw] tablet:px-[0.2vw] tablet:py-[0.2vw] tablet:gap-[0.3vw] gap-[0.5vw] text-[2vw] tablet:text-[0.9vw] ${
               log.turn === "red" ? "bg-red-300" : "bg-blue-300"
             }`}
           >
@@ -35,14 +39,14 @@ const GameLog: React.FC = () => {
                 {log.nickname}
               </span>
             )}
-
-            <span className={`text-[1.2vw] tablet:text-[0.8vw]`}>{log.log}</span>
+            <span className={`text-[1.8vw] tablet:text-[0.8vw]`}>
+              {log.log}
+            </span>
             {log.clue && (
-              <span className="font-semibold bg-gray-300 p-1 rounded-sm">
+              <span className="font-semibold bg-gray-300 p-[0.4vw] tablet:p-[0.1vw] rounded-sm uppercase">
                 {log.clue.clueWord} {log.clue.clueNumber}
               </span>
             )}
-
             {log.word && (
               <span
                 className={`font-semibold uppercase ${

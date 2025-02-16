@@ -5,7 +5,7 @@
 .typewriter {
   display: inline-block;
   overflow: hidden;
-  white-space: pre-wrap; /* Allow text wrapping */
+  white-space: pre-wrap;
   word-break: normal;
 }
 
@@ -23,3 +23,15 @@
     opacity: 1;
   }
 }
+
+::-webkit-scrollbar {
+  width: 0px;
+  height: 0px;
+  background: transparent;
+}
+
+* {
+  scrollbar-width: none; /* Firefox */
+  -ms-overflow-style: none; /* IE & Edge */
+}
+

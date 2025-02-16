@@ -30,7 +30,7 @@ const Blue: React.FC = () => {
     setCurrentFrontImg(BlueFront[randomIndex]);
   }, []);
   return (
-    <div className="relative aspect-[17/11] mobile-tablet:w-[10vw] laptop-l:w-[10vw]">
+    <div className="relative aspect-[17/11] mobile-tablet:w-[12vw] tablet:w-[10vw]">
       {/* Background Image */}
       <img
         src={BlueImgBack}

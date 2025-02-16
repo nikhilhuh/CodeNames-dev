@@ -55,8 +55,8 @@ const HeadingArea: React.FC = () => {
   if (!PlayerDetails || !room) return <></>;
 
   return (
-    <div className="flex bg-transparent justify-center items-center">
-      <div className="bg-white shadow-md text-black rounded-lg laptop-l:rounded-xl max-w-[95vw] tablet:max-w-[60vw] text-[2.5vw] tablet:text-[1vw] px-2 py-1 text-center overflow-hidden">
+    <div className="flex bg-transparent justify-center items-center mt-[0.2vw] mb-[0.3vw]">
+      <div className="bg-white shadow-md text-black rounded-lg laptop-l:rounded-xl max-w-[95vw] tablet:max-w-[60vw] text-[2.5vw] tablet:text-[1.5vw] laptop-sm:text-[1.2vw] laptop-l:text-[1vw] px-[1.5vw] py-[1vw] tablet:px-[0.5vw] tablet:py-[0.3vw] text-center overflow-hidden">
         <span key={key} className="typewriter font-semibold">
           {displayedText.split("").map((char, index) => (
             <span key={index} style={{ animationDelay: `${index * 50}ms` }}>

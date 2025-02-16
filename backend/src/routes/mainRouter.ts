@@ -7,6 +7,7 @@ import {router as resetGameRouter} from "./gameRoutes/reset-game";
 import {router as giveClueRouter} from "./gameRoutes/give-clue";
 import {router as endGuessingRouter} from "./gameRoutes/end-guessing";
 import {router as cardClickRouter} from "./gameRoutes/card-click";
+import {router as changeNicknameRouter} from "./roomRoutes/change-nickname"
 import express from "express";
 
 const mainRouter = express.Router();
@@ -21,5 +22,6 @@ mainRouter.use("/", cardRevealedRouter);
 mainRouter.use("/", resetGameRouter);
 mainRouter.use("/", giveClueRouter);
 mainRouter.use("/", endGuessingRouter);
+mainRouter.use("/", changeNicknameRouter);
 
 export { mainRouter };

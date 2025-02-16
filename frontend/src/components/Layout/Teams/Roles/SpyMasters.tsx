@@ -28,13 +28,13 @@ const SpyMasters: React.FC<SpyMastersProps> = ({ team, handleJoin }) => {
   return (
     <>
       <div
-        className={`mt-1 text-[2.5vw] tablet:text-[1.2vw] font-thin ${
+        className={`mt-[2px] text-[2.5vw] tablet:text-[1.2vw] laptop-l:text-[1vw] font-thin ${
           team === "red" ? "text-red-400" : "text-blue-300"
         }`}
       >
         SpyMaster
       </div>
-      <div className="text-gray-100 text-[1.8vw] tablet:text-[0.9vw] mt-1">
+      <div className="text-gray-100 text-[1.8vw] tablet:text-[0.9vw] laptop-l:text-[0.8vw] mt-[2px]">
         {spymasters.length > 0 ? (
           <div className="flex flex-wrap gap-2 ">
             {spymasters.map((spymaster, index) => (
@@ -54,7 +54,7 @@ const SpyMasters: React.FC<SpyMastersProps> = ({ team, handleJoin }) => {
             {!PlayerDetails?.role && (
               <button
                 onClick={() => handleJoin("spymaster")}
-                className="mt-1 flex gap-2 items-center text-[2vw] tablet:text-[0.7vw] hover:bg-yellow-500 laptop-sm:px-4 laptop-sm:py-2 p-2 bg-yellow-400 rounded-full shadow-lg font-semibold text-black"
+                className="mt-[2px] flex gap-2 items-center text-[2vw] tablet:text-[0.7vw] hover:bg-yellow-500 laptop-sm:px-4 laptop-sm:py-2 p-2 bg-yellow-400 rounded-full shadow-lg font-semibold text-black"
               >
                 Join as Spymaster
               </button>

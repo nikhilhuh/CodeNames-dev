@@ -3,25 +3,24 @@ import { axiosInstance } from "../../axiosInstance";
 import socket from "../../socketSetup";
 import { apiErrorHandler } from "../apiErrorHandling";
 
-export const updatePlayerDetails = async (
+export const changeNickname = async (
   roomId: string,
-  nickname: Player["nickname"],
-  role: Player["role"],
-  team: Player["team"]
+  oldnickname: Player["nickname"],
+  newnickname: Player["nickname"]
 ) => {
   try {
-    const response = await axiosInstance.patch("/update-player", {
-      nickname,
+    const response = await axiosInstance.patch("/change-nickname", {
       roomId,
-      team,
-      role,
+      oldnickname,
+      newnickname
     });
     if (response.data.success) {
       socket.emit("update-player", roomId);
+      sessionStorage.setItem("nickname",newnickname);
 
       return { success: true, message: "Completed" };
     } else
-      return { success: false, message: "Unexpected error occured while updating Player Details" };
+      return { success: false, message: "Unexpected error occured while updating nickname" };
   } catch (err: any) {
     return apiErrorHandler(err);
   }

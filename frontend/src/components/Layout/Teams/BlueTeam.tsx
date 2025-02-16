@@ -7,7 +7,6 @@ import SpyMasters from "./Roles/SpyMasters";
 import { useRoom } from "../../../context/RoomContext";
 import { Player } from "../../../utils/constants";
 
-
 const BlueTeam: React.FC = () => {
   const { PlayerDetails } = usePlayer();
   const { room, roomId } = useRoom();
@@ -38,16 +37,16 @@ const BlueTeam: React.FC = () => {
 
   return (
     <div
-      className={`bg-blue-600 tablet:rounded-xl tablet:shadow-md tablet:py-2 tablet:px-4 p-2 `}
+      className={`bg-blue-600 tablet:rounded-xl laptop-l:rounded-2xl 4k:rounded-3xl tablet:shadow-md laptop-l:shadow-lg 4k:shadow-2xl p-2 laptop-sm:px-3 laptop-sm:py-2 laptop-l:px-4 4k:p-6`}
     >
-      <div className="flex gap-4 justify-between items-center">
-        <div className="text-[5vw] text-gray-100 font-bold drop-shadow-md">
+      <div className="flex gap-[3vw] justify-end items-center">
+        <div className="text-[5vw] tablet:text-[2.5vw] text-gray-100 font-bold drop-shadow-md">
           {wordsRemaining}
         </div>
         <Blue />
       </div>
 
-      <div className="flex flex-col whitespace-break-spaces mt-2">
+      <div className="flex flex-col whitespace-break-spaces">
         <Operatives team="blue" handleJoin={handleJoin} />
         <SpyMasters team="blue" handleJoin={handleJoin} />
       </div>

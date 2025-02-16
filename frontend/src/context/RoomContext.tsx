@@ -6,7 +6,7 @@ import {
   ReactNode,
 } from "react";
 import { Room } from "../utils/constants";
-import CryptoJS from "crypto-js"
+import { decryptData } from "../services/encryptAndDecrypt";
 
 interface RoomContextType {
   room: Room | null;
@@ -42,17 +42,12 @@ export const RoomProvider = ({ children }: RoomProviderProps) => {
   const [roomId, setRoomId] = useState<string | null>(null);
   const [reset, setReset] = useState<boolean>(false);
 
-  const decryptData = (cipherText: string) => {
-    const bytes = CryptoJS.AES.decrypt(cipherText, "your-secret-key");
-    return bytes.toString(CryptoJS.enc.Utf8); 
-  };
-
   useEffect(() => {
     const updateFromStorage = () => {
-      const storedRoomId = sessionStorage.getItem("roomId");
+      const storedRoomId = localStorage.getItem("roomId");
       if (storedRoomId) setRoomId(storedRoomId);
 
-      const storedRoomDetails = sessionStorage.getItem("roomDetails");
+      const storedRoomDetails = localStorage.getItem("roomDetails");
       if (storedRoomDetails) {
         try {
           const decryptedRoomDetails = decryptData(storedRoomDetails);

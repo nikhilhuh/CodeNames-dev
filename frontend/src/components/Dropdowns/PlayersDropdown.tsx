@@ -1,5 +1,6 @@
 import React, { useState } from "react";
 import { useRoom } from "../../context/RoomContext";
+import ErrorModal from "../Modals/ErrorModal";
 
 const PlayersDropdown: React.FC = () => {
   const { room, roomId } = useRoom();
@@ -8,6 +9,8 @@ const PlayersDropdown: React.FC = () => {
   const [buttontext, setButtontext] = useState<string>(
     "Copy Room Id to clipboard"
   );
+  const [error, setError] = useState<string>("");
+  const [showErrorModal, setShowErrorModal] = useState<boolean>(false);
 
   const handleRoomIdCopy = () => {
     if (roomId) {
@@ -16,17 +19,27 @@ const PlayersDropdown: React.FC = () => {
         .then(() => {
           setButtontext("✔️ Copied");
         })
-        .catch(() => {
+        .catch((error) => {
+          setError(error);
+          handleErrorModal();
           setButtontext("Copy Room Id to clipboard");
         });
     }
   };
+
+  const handleErrorModal = () => {
+    setShowErrorModal((prev) => !prev);
+  };
+
   return (
     <div
-      className="absolute top-[110%] left-1 z-50 rounded-xl w-[40vw] tablet:w-[30vw] laptop-sm:w-[20vw] text-[2vw] tablet:text-[1.2vw] laptop-sm:text-[1vw] laptop-l:text-[0.8vw]"
+      className="absolute top-[110%] left-1 z-50 rounded-xl w-[40vw] tablet:w-[35vw] laptop-sm:w-[25vw] laptop-l:w-[20vw] text-[2.2vw] tablet:text-[1.2vw] laptop-sm:text-[1vw] laptop-l:text-[0.8vw] 4k:text-[1vw]"
       onClick={(e) => e.stopPropagation()}
     >
-      <div className="bg-gray-100 p-2 tablet:p-4 rounded-tr-xl rounded-tl-xl border-b-2 border-b-gray-400 flex flex-col items-center 4k:gap-2">
+      {showErrorModal && (
+        <ErrorModal onClose={handleErrorModal} error={error} />
+      )}
+      <div className="bg-gray-100 p-2 4k:p-6 text-center tablet:p-4 rounded-tr-xl rounded-tl-xl border-b-2 border-b-gray-400 flex flex-col items-center 4k:gap-2">
         <div>Invite other players by sending them this room id</div>
         <input
           type="text"
@@ -37,20 +50,17 @@ const PlayersDropdown: React.FC = () => {
         <button
           onClick={handleRoomIdCopy}
           title="Room Id"
-          className="mt-1 p-2 bg-yellow-400 rounded-full shadow-md font-semibold w-max"
+          className="mt-1 p-2 4k:p-4 bg-yellow-400 rounded-full shadow-md font-semibold w-max"
         >
           {buttontext}
         </button>
       </div>
 
-      <div className="bg-gray-300 p-2 tablet:p-4 rounded-bl-xl rounded-br-xl">
-        <div>Players in Room</div>
+      <div className="bg-gray-300 p-2 tablet:p-4 4k:p-6 rounded-bl-xl rounded-br-xl">
+        <div className="text-center">Players in Room</div>
         <div className="mt-2 flex flex-wrap gap-2">
           {players.map((player, index) => (
-            <div
-              key={index}
-              className="bg-gray-200 px-2 py-1 rounded-lg"
-            >
+            <div key={index} className="bg-gray-200 px-2 py-1 rounded-lg">
               {player.nickname}
             </div>
           ))}

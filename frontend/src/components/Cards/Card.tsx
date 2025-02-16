@@ -10,17 +10,15 @@ import { cardClick } from "../../services/api/apiCalls/cardClick";
 import { revealCard } from "../../services/api/apiCalls/revealCard";
 import { FaRegHandPointer } from "react-icons/fa";
 import { useRoom } from "../../context/RoomContext";
+import ErrorModal from "../Modals/ErrorModal";
 
-interface CardProps {
-  card: wordCard;
-  setError: React.Dispatch<React.SetStateAction<string>>;
-}
-
-const Card: React.FC<CardProps> = ({ card, setError }) => {
+const Card: React.FC<{ card: wordCard }> = ({ card }) => {
   const { PlayerDetails } = usePlayer();
   const { room, roomId, reset, setReset } = useRoom();
 
   const [animate, setAnimate] = useState(true);
+  const [error, setError] = useState<string>("");
+  const [showErrorModal, setShowErrorModal] = useState<boolean>(false);
 
   useEffect(() => {
     if (reset) {
@@ -29,7 +27,7 @@ const Card: React.FC<CardProps> = ({ card, setError }) => {
   }, [reset]);
 
   if (!PlayerDetails || !room || !roomId || !card) return <></>;
-  
+
   const handleAnimationEnd = () => {
     setAnimate(false);
     setReset(false);
@@ -42,46 +40,72 @@ const Card: React.FC<CardProps> = ({ card, setError }) => {
       !PlayerDetails.team ||
       PlayerDetails.role === "spymaster" ||
       PlayerDetails.team !== room.turn ||
-      !room.clueGiven || room.winner !== null
+      !room.clueGiven ||
+      room.winner !== null
     )
       return;
 
-    const response = await cardClick(roomId, card.word, PlayerDetails.nickname);
-    if (response && !response.success) {
-      setError(response.message || "An error occurred");
+    try {
+      const response = await cardClick(
+        roomId,
+        card.word,
+        PlayerDetails.nickname
+      );
+      if (response && !response.success) {
+        setError(response.message || "An error occured while marking the card");
+        handleErrorModal();
+      }
+    } catch (error) {
+      setError("An error occured while marking the card");
+      handleErrorModal();
     }
   };
 
-  const handleCardReveal = async () => {
+  const handleCardReveal = async (event: React.MouseEvent) => {
+    event.stopPropagation();
     if (
       card.revealed ||
       !PlayerDetails.role ||
       !PlayerDetails.team ||
       PlayerDetails.role === "spymaster" ||
       PlayerDetails.team !== room.turn ||
-      !room.clueGiven || room.winner !== null
+      !room.clueGiven ||
+      room.winner !== null
     )
       return;
 
-    const response = await revealCard(
-      roomId,
-      card.word,
-      PlayerDetails.nickname
-    );
-    if (response && !response.success) {
-      setError(response.message);
+    try {
+      const response = await revealCard(
+        roomId,
+        card.word,
+        PlayerDetails.nickname
+      );
+      if (response && !response.success) {
+        setError(
+          response.message || "An error ocuured while revealing the card"
+        );
+        handleErrorModal();
+      }
+    } catch (error) {
+      setError("An error ocuured while revealing the card");
+      handleErrorModal();
     }
+  };
+
+  const handleErrorModal = () => {
+    setShowErrorModal((prev) => !prev);
   };
 
   return (
     <div
       key={reset ? "reset-true" : "reset-false"}
-      className={`${
-        animate ? "animate-card-appear" : ""
-      }`}
+      className={`${animate ? "animate-card-appear" : ""}`}
       onClick={handleCardClick}
       onAnimationEnd={handleAnimationEnd}
     >
+      {showErrorModal && (
+        <ErrorModal onClose={handleErrorModal} error={error} />
+      )}
       <div className="relative aspect-[17/11] overflow-hidden cursor-pointer">
         {card.revealed ? (
           card.color === "black" ? (
@@ -101,7 +125,7 @@ const Card: React.FC<CardProps> = ({ card, setError }) => {
           <NonRevealed card={card} />
         )}
 
-        <div className="absolute top-[10%] left-[8%] text-[0.3rem] mobile-m:text-[0.4rem] mobile-l:text-[0.5rem] tablet:text-[0.4rem] laptop-sm:text-[0.5rem] laptop-l:text-[0.6rem] 4k:text-[1.5rem] flex flex-wrap gap-1">
+        <div className="absolute top-[10%] left-[7%] text-[0.35rem] mobile-m:text-[0.4rem] mobile-l:text-[0.5rem] tablet:text-[0.4rem] laptop-sm:text-[0.5rem] laptop-l:text-[0.7rem] 4k:text-[1.5rem] flex flex-wrap gap-1">
           {card.markedBy?.map((marker, index) => (
             <span className="bg-red-600 px-[2px]" key={index}>
               {marker}
@@ -112,12 +136,13 @@ const Card: React.FC<CardProps> = ({ card, setError }) => {
         {PlayerDetails.role === "operative" &&
           PlayerDetails.team === room.turn &&
           room.clueGiven &&
-          !card.revealed && room.winner === null && (
+          !card.revealed &&
+          room.winner === null && (
             <div
-              onClick={handleCardReveal}
+              onClick={(event) => handleCardReveal(event)}
               className="absolute top-[2%] right-[2%] p-1 z-10 bg-yellow-400 rounded-full shadow-lg cursor-pointer"
             >
-              <FaRegHandPointer className="text-[2vw]" />
+              <FaRegHandPointer className="text-[2.5vw] tablet:text-[1.5vw]" />
             </div>
           )}
 
@@ -125,7 +150,8 @@ const Card: React.FC<CardProps> = ({ card, setError }) => {
           <div
             className={`absolute top-[59%] mobile-m:top-[60%] mobile-l:top-[61%] left-1/2 transform -translate-x-1/2 flex items-center justify-center text-center uppercase
             text-[2vw] tablet:text-[1vw] font-bold ${
-              card.color === "black" &&  ( PlayerDetails?.role === "spymaster" || room.winner )
+              card.color === "black" &&
+              (PlayerDetails?.role === "spymaster" || room.winner)
                 ? "text-white"
                 : "text-black"
             }`}

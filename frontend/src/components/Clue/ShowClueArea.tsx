@@ -6,12 +6,12 @@ const ShowClueArea: React.FC = () => {
 
   return (
     <div
-      className={`flex items-center justify-center font-bold text-[2.5vw] tablet:text-[1.5vw]`}
+      className={`flex items-center justify-center font-bold text-[2.5vw] tablet:text-[1.2vw]`}
     >
-      <div className={`4k:border-6 laptop-sm:border-4 uppercase border-2 rounded-md tablet:rounded-lg ${room?.turn === "red"? "border-red-500" : "border-blue-500"} 4k:p-4 laptop-sm:p-2 p-1 bg-white`}>
+      <div className={`uppercase border-[0.3vw] rounded-md laptop-l:rounded-lg ${room?.turn === "red"? "border-red-500" : "border-blue-500"} bg-white px-[1.2vw] py-[1vw] tablet:px-[0.4vw] tablet:py-[0.3vw]`}>
         {room?.clue?.clueWord}
       </div>
-      <div className={`4k:border-6 laptop-sm:border-4 uppercase border-2 rounded-md tablet:rounded-lg ${room?.turn === "red"? "border-red-500" : "border-blue-500"} 4k:p-4 laptop-sm:p-2 p-1 bg-white`}>
+      <div className={`uppercase border-[0.3vw] rounded-md laptop-l:rounded-lg ${room?.turn === "red"? "border-red-500" : "border-blue-500"} bg-white px-[1.2vw] py-[1vw] tablet:px-[0.4vw] tablet:py-[0.3vw]`}>
         {room?.clue?.clueNumber}
       </div>
     </div>

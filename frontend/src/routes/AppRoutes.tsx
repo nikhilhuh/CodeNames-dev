@@ -7,7 +7,7 @@ const AppRoutes = () => {
   return (
       <Routes>
         <Route path="/" element={<Room />} />
-        <Route path="/games" element={<MainGamePage />} />
+        <Route path="/games/:roomId" element={<MainGamePage />} />
         <Route path="*" element={<Error404 />} />
       </Routes>
   );

@@ -23,21 +23,21 @@ const InputClueArea: React.FC = () => {
   };
 
   return (
-    <div className="flex gap-1 tablet:gap-2 4k:gap-6 justify-center items-center text-[3vw] tablet:text-[1.5vw]">
+    <div className="flex gap-[1vw] tablet:gap-[0.5vw] justify-center items-center text-[3vw] tablet:text-[1.3vw]">
       <input
         id={`inputClue-${id}`}
         name={`inputClue-${id}`}
         type="text"
         onChange={(e) => setClueWord(e.target.value)}
         placeholder="TYPE YOUR CLUE HERE"
-        className="uppercase outline-none rounded-lg 4k:rounded-xl 4k:px-4 laptop-sm:px-2 laptop-sm:py-1 p-1"
+        className="uppercase outline-none rounded-lg 4k:rounded-xl px-[1.5vw] py-[1vw] tablet:px-[0.5vw] tablet:py-[0.3vw]"
         aria-label="Enter your clue"
       />
 
       {/* Number Selector */}
       <div className="relative">
         <div
-          className="flex justify-center items-center bg-white rounded-lg 4k:rounded-xl cursor-pointer 4k:px-4 laptop-sm:py-1 px-2 py-1"
+          className="flex justify-center items-center bg-white rounded-lg 4k:rounded-xl cursor-pointer px-[1.5vw] py-[1vw] tablet:px-[0.5vw] tablet:py-[0.3vw]"
           onClick={() => setIsDropdownOpen((prev) => !prev)}
           role="button"
           tabIndex={0}
@@ -54,7 +54,7 @@ const InputClueArea: React.FC = () => {
       {/* Submit Button */}
       <button
         onClick={handleSubmit}
-        className="flex justify-center items-center bg-green-600 hover:bg-green-700 4k:px-4 laptop-sm:px-2 laptop-sm:py-1 p-1 rounded-lg 4k:rounded-xl font-semibold"
+        className="flex justify-center items-center bg-green-600 hover:bg-green-700 px-[1.5vw] py-[1vw] tablet:px-[0.5vw] tablet:py-[0.3vw] rounded-lg 4k:rounded-xl font-semibold"
         aria-label="Submit your clue"
       >
         Give Clue
@@ -68,13 +68,13 @@ const NumberDropdown: React.FC<{ onSelect: (num: number) => void }> = ({
   onSelect,
 }) => {
   return (
-    <div className="absolute bottom-[120%] left-1/2 transform -translate-x-1/2 text-[3vw] tablet:text-[1.5vw] bg-white rounded-lg 4k:rounded-xl shadow-lg overflow-hidden z-10">
-      <div className="flex laptop-sm:gap-2 laptop-l:gap-4 4k:gap-6 gap-1 laptop-sm:p-2 p-1">
+    <div className="absolute bottom-[120%] left-1/2 transform -translate-x-1/2 text-[3vw] tablet:text-[1.3vw] bg-white rounded-lg 4k:rounded-xl shadow-lg overflow-hidden z-10">
+      <div className="flex gap-[0.5vw] px-[0.5vw] py-[0.3vw]">
         {Array.from({ length: 10 }, (_, index) => (
           <div
             key={`number-option-${index}`}
             onClick={() => onSelect(index)}
-            className="lg:px-2 lg:py-1 p-1 cursor-pointer hover:bg-gray-200  text-center bg-gray-100 rounded-md"
+            className="px-[1.5vw] py-[1vw] tablet:px-[0.4vw] tablet:py-[0.2vw] cursor-pointer hover:bg-gray-200  text-center bg-gray-100 rounded-md"
             role="option"
           >
             {index}
