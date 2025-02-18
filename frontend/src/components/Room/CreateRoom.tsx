@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React from "react";
 import { createRoom } from "../../services/api/apiCalls/createRoom";
 import { useNavigate } from "react-router-dom";
 import { useRoom } from "../../context/RoomContext";
