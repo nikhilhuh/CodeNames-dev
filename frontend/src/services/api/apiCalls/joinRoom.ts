@@ -35,8 +35,12 @@ export const joinRoom = async (
           message: roomResponse.message ?? "An unexpected error occurred",
         };
       }
-    } else
-      return { success: false, message: "Unexpected error occured during room join" };
+    } else {
+      return {
+        success: false,
+        message: "Unexpected error occured during room join",
+      };
+    }
   } catch (err: any) {
     return apiErrorHandler(err);
   }

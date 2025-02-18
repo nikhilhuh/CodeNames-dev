@@ -33,14 +33,12 @@ interface PlayerProviderProps {
 }
 
 export const PlayerProvider = ({ children }: PlayerProviderProps) => {
-  const [, setNickname] = useState<string | null>(null);
   const [PlayerDetails, setPlayerDetails] = useState<Player | null>(null);
   const { room } = useRoom();
 
   useEffect(() => {
     const updateFromStorage = () => {
       const storedNickname = localStorage.getItem("nickname");
-      if (storedNickname) setNickname(storedNickname);
 
       const player = room?.players.find((player)=> player.nickname === storedNickname)
       setPlayerDetails(player || null);

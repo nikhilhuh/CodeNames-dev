@@ -15,6 +15,9 @@ export default {
       '4k': '1800px'
     },
     extend: {
+      height: {
+        screen: '100svh',
+      },
       animation: {
         'card-appear': 'cardAppear 1s ease-in-out forwards',
       },

@@ -13,7 +13,7 @@ const MobileGameScene: React.FC = () => {
   const { room } = useRoom();
 
   return (
-    <div className="h-screen w-screen grid grid-rows-[auto_auto_auto_1fr] grid-cols-1">
+    <div className="h-screen grid grid-rows-[auto_auto_auto_1fr] grid-cols-1">
       {/* Top Options Bar */}
       <div className="col-span-1 p-1">
         <TopOptionsBar />

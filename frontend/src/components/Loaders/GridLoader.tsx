@@ -1,20 +1,22 @@
 import React from "react";
 import { grid } from "ldrs";
+import BackgroundImg from "../../assets/images/miscellaneous/bg-raster.svg";
 
 const GridLoader: React.FC = () => {
   grid.register();
+  console.log("GridLoader.tsx Image:", BackgroundImg);
   return (
-    <div className="absolute top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2">
-      <div className="hidden laptop-sm:flex justify-center">
-        <l-grid size="120" speed="1.0" color="white"></l-grid>
+      <div className="absolute top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2">
+        <div className="hidden laptop-sm:flex justify-center">
+          <l-grid size="120" speed="1.0" color="white"></l-grid>
+        </div>
+        <div className="laptop-sm:hidden flex justify-center">
+          <l-grid size="60" speed="1.0" color="white"></l-grid>
+        </div>
+        <div className="text-white text-center text-[3vw] tablet:text-[2vw] laptop-sm:text-[1.5vw] laptop-l:text-[1vw]">
+          Connecting to the room...
+        </div>
       </div>
-      <div className="laptop-sm:hidden flex justify-center">
-        <l-grid size="60" speed="1.0" color="white"></l-grid>
-      </div>
-      <div className="text-white text-center text-[3vw] tablet:text-[2vw] laptop-sm:text-[1.5vw] laptop-l:text-[1vw]">
-        Connecting to the room...
-      </div>
-    </div>
   );
 };
 

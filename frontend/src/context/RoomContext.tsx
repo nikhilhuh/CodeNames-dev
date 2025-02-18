@@ -13,12 +13,16 @@ interface RoomContextType {
   roomId: string | null;
   reset: boolean;
   setReset: React.Dispatch<React.SetStateAction<boolean>>;
+  isLoading: boolean;
+  setisLoading: React.Dispatch<React.SetStateAction<boolean>>;
 }
 const defaultRoomContext: RoomContextType = {
   room: null,
   roomId: null,
   reset: false,
   setReset: () => {},
+  isLoading: true,
+  setisLoading: () => {},
 };
 
 const RoomContext = createContext<RoomContextType>(defaultRoomContext);
@@ -41,6 +45,7 @@ export const RoomProvider = ({ children }: RoomProviderProps) => {
   const [room, setRoom] = useState<Room | null>(null);
   const [roomId, setRoomId] = useState<string | null>(null);
   const [reset, setReset] = useState<boolean>(false);
+  const [isLoading, setisLoading] = useState<boolean>(false);
 
   useEffect(() => {
     const updateFromStorage = () => {
@@ -74,6 +79,8 @@ export const RoomProvider = ({ children }: RoomProviderProps) => {
         roomId,
         reset,
         setReset,
+        isLoading,
+        setisLoading
       }}
     >
       {children}

@@ -4,12 +4,20 @@ import socket from "../services/socketSetup";
 import { useRoom } from "../context/RoomContext";
 import TabletGameScene from "../components/Layout/ResponsiveGameScene/TabletGameScene";
 import MobileGameScene from "../components/Layout/ResponsiveGameScene/MobileGameScene";
+import GridLoader from "../components/Loaders/GridLoader";
 
 const MainGamePage = () => {
-  const { setReset } = useRoom();
+  const { setReset, room, isLoading, setisLoading } = useRoom();
+
+  useEffect(() => {
+    if (room) {
+      setisLoading(false);
+    }
+  }, [room]);
 
   useEffect(() => {
     socketListeners(socket, setReset);
+
     return () => {
       socket.off("room-updated");
       socket.off("clue-given");
@@ -23,12 +31,18 @@ const MainGamePage = () => {
 
   return (
     <>
-      <div className="hidden tablet:block">
-        <TabletGameScene />
-      </div>
-      <div className="tablet:hidden">
-        <MobileGameScene />
-      </div>
+      {isLoading ? (
+        <GridLoader />
+      ) : (
+        <>
+          <div className="hidden tablet:block">
+            <TabletGameScene />
+          </div>
+          <div className="tablet:hidden">
+            <MobileGameScene />
+          </div>
+        </>
+      )}
     </>
   );
 };

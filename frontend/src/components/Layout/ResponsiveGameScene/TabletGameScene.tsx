@@ -14,7 +14,7 @@ const TabletGameScene: React.FC = () => {
   const { room } = useRoom();
 
   return (
-    <div className="h-screen w-screen grid grid-rows-[auto_auto_1fr] grid-cols-[1fr_3fr_1fr] gap-x-[3vw] px-[4vw] py-2 4k:py-4">
+    <div className="h-screen grid grid-rows-[auto_auto_1fr] grid-cols-[1fr_3fr_1fr] gap-x-[3vw] px-2 laptop-sm:px-[2vw] laptop-l:px-[4vw] py-2 4k:py-4">
       {/* Top Options Bar */}
       <div className="col-span-3">
         <TopOptionsBar />
@@ -26,7 +26,7 @@ const TabletGameScene: React.FC = () => {
       </div>
 
       {/* Left Column for Tablet and Above */}
-      <div className="flex flex-col gap-[4vw]">
+      <div className="flex flex-col gap-[2vw]">
         <RedTeam />
         <Developer />
       </div>

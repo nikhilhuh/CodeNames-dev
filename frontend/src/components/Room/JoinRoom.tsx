@@ -1,29 +1,26 @@
 import React, { useState } from "react";
 import { useNavigate } from "react-router-dom";
 import { joinRoom } from "../../services/api/apiCalls/joinRoom";
-import ErrorModal from "../Modals/ErrorModal";
+import { useRoom } from "../../context/RoomContext";
 
-const JoinRoom: React.FC<{ nickname: string }> = ({ nickname }) => {
+const JoinRoom: React.FC<{
+  nickname: string;
+  setError: React.Dispatch<React.SetStateAction<string>>;
+}> = ({ nickname, setError }) => {
   const [roomId, setRoomId] = useState<string>("");
-  const [showErrorModal, setShowErrorModal] = useState<boolean>(false);
-  const [error, setError] = useState<string>("");
+  const { setisLoading } = useRoom();
   const navigate = useNavigate();
-
-  const handleErrorModal = () => {
-    setShowErrorModal((prev) => !prev);
-  };
 
   const handleJoinRoom = async () => {
     if (roomId.trim() === "") {
       setError("Enter Room ID to join");
-      handleErrorModal();
       return;
     }
     if (nickname.trim() === "") {
       setError("Enter your Nickname to continue");
-      handleErrorModal();
       return;
     }
+    setisLoading(true);
     try {
       const response = await joinRoom(roomId, nickname);
 
@@ -34,19 +31,14 @@ const JoinRoom: React.FC<{ nickname: string }> = ({ nickname }) => {
           response?.message ||
             "Failed to join the room. Please check the Room ID and try again."
         );
-        handleErrorModal();
       }
     } catch (error) {
       setError(`Error joining room , please try again`);
-      handleErrorModal();
     }
   };
 
   return (
     <div className="flex flex-col gap-1 px-4 py-2">
-      {showErrorModal && (
-        <ErrorModal onClose={handleErrorModal} error={error} />
-      )}
       <label
         htmlFor="joinRoomId"
         className="font-mono text-center text-[3vw] tablet:text-[2.5vw] laptop-l:text-[2vw]"

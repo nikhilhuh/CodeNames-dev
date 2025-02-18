@@ -20,7 +20,7 @@ const App: React.FC = () => {
 
   return (
     <div
-      className={`min-h-screen max-h-screen overflow-hidden bg-cover bg-center ${background} bg-cover bg-center bg-no-repeat`}
+      className={`min-h-screen max-h-screen overflow-hidden bg-cover bg-center ${background} bg-no-repeat`}
       style={{
         backgroundImage: `url(${BackgroundImg})`,
       }}
