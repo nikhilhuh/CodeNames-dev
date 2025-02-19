@@ -20,7 +20,7 @@ const GameLog: React.FC = () => {
       </div>
 
       {/* Scrollable Logs Container */}
-      <div className="flex flex-col gap-[2px] tablet:px-[0.1vw] mt-[2px] overflow-y-auto flex-1">
+      <div className="flex flex-col gap-[1px] tablet:gap-[2px] tablet:px-[0.1vw] mt-[2px] overflow-y-auto flex-1">
         {gameLogs?.map((log, index) => (
           <div
             key={index}

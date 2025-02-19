@@ -1,10 +1,8 @@
 import React from "react";
 import { grid } from "ldrs";
-import BackgroundImg from "../../assets/images/miscellaneous/bg-raster.svg";
 
 const GridLoader: React.FC = () => {
   grid.register();
-  console.log("GridLoader.tsx Image:", BackgroundImg);
   return (
       <div className="absolute top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2">
         <div className="hidden laptop-sm:flex justify-center">

@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import HowToPlay from "../components/Room/HowToPlay";
 import NickName from "../components/Room/NickName";
 import CreateRoom from "../components/Room/CreateRoom";
@@ -10,10 +10,14 @@ import ErrorModal from "../components/Modals/ErrorModal";
 const Room: React.FC = () => {
   const [nickname, setNickName] = useState<string>("");
   const [error , setError] = useState<string>("");
-  const { isLoading } = useRoom();
+  const { isLoading , setisLoading } = useRoom();
+
+  useEffect(() => {
+    if(error) setisLoading(false);
+  } ,[error])
 
   return (
-    <div className="bg-transparent h-screen flex justify-center items-center px-2 py-2">
+    <div className="bg-transparent h-full flex justify-center items-center px-2 py-2">
       {error && (
         <ErrorModal onClose={()=> setError("")} error={error} />
       )}

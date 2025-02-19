@@ -16,7 +16,7 @@ export const changeNickname = async (
     });
     if (response.data.success) {
       socket.emit("update-player", roomId);
-      sessionStorage.setItem("nickname",newnickname);
+      localStorage.setItem("nickname",newnickname);
 
       return { success: true, message: "Completed" };
     } else

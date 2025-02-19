@@ -54,7 +54,7 @@ const Operatives: React.FC<OperativesProps> = ({ team, handleJoin }) => {
         {!PlayerDetails?.role && (
           <button
             onClick={() => handleJoin("operative")}
-            className="mt-[2px] flex gap-2 items-center text-[2vw] tablet:text-[0.7vw] hover:bg-yellow-500 laptop-sm:px-4 laptop-sm:py-2 p-2 bg-yellow-400 rounded-full shadow-lg font-semibold text-black"
+            className="mt-[2px] flex gap-2 items-center text-[2vw] tablet:text-[0.7vw] hover:bg-yellow-500 laptop-sm:px-4 laptop-sm:py-2 p-2 bg-yellow-400 rounded-full shadow-lg font-semibold text-black transition"
           >
             Join as Operative
           </button>

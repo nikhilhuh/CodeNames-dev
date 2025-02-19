@@ -33,7 +33,7 @@ const PlayerMenu: React.FC = () => {
       <button
         onClick={playerClick}
         title="Your Nickname"
-        className="flex gap-[1vw] tablet:gap-[0.5vw] items-center px-[1.5vw] py-[1vw] tablet:px-[0.6vw] tablet:py-[0.5vw]  bg-orange-400 rounded-full shadow-lg font-semibold"
+        className="flex gap-[1vw] tablet:gap-[0.5vw] items-center px-[2.5vw] py-[1vw] tablet:px-[1vw] tablet:py-[0.8vw]  bg-orange-400 rounded-full shadow-xl hover:bg-orange-500 hover:scale-105 transition"
       >
         {PlayerDetails.nickname}
       </button>

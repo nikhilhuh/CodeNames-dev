@@ -34,14 +34,14 @@ const MainGamePage = () => {
       {isLoading ? (
         <GridLoader />
       ) : (
-        <>
-          <div className="hidden tablet:block">
+        <div className="h-full">
+          <div className="hidden tablet:block h-full">
             <TabletGameScene />
           </div>
-          <div className="tablet:hidden">
+          <div className="tablet:hidden h-full">
             <MobileGameScene />
           </div>
-        </>
+        </div>
       )}
     </>
   );

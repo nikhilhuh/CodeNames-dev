@@ -13,9 +13,9 @@ const MobileGameScene: React.FC = () => {
   const { room } = useRoom();
 
   return (
-    <div className="h-screen grid grid-rows-[auto_auto_auto_1fr] grid-cols-1">
+    <div className="h-full grid grid-rows-[auto_auto_auto_1fr] grid-cols-1">
       {/* Top Options Bar */}
-      <div className="col-span-1 p-1">
+      <div className="col-span-1 py-[2vw] px-[3vw]">
         <TopOptionsBar />
       </div>
 
@@ -25,7 +25,7 @@ const MobileGameScene: React.FC = () => {
       </div>
 
       {/* Board + Clue Area */}
-      <div className="flex flex-col items-center gap-[2.5vw] p-1">
+      <div className="flex flex-col items-center gap-[2.5vw] py-[2vw] px-[3vw]">
         <CardGrid />
         {room?.winner ? <WinnerInfo /> : <ClueArea />}
       </div>
