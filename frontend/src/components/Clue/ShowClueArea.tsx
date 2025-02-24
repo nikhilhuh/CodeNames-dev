@@ -32,7 +32,7 @@ const ShowClueArea: React.FC<ShowClueAreaProps> = ({
 
   return (
     <div
-      className={`flex items-center z-50 justify-center font-bold text-[2.5vw] tablet:text-[1.2vw] transition-transform duration-[1500ms] ease-in-out ${
+      className={`flex items-center z-40 justify-center font-bold text-[2.5vw] tablet:text-[1.2vw] transition-transform duration-[1500ms] ease-in-out ${
         isAnimating
           ? "translate-y-[-15vh] mobile-m:translate-y-[-18vh] mobile-l:translate-y-[-20vh] tablet:translate-y-[-15vh] laptop-sm:translate-y-[-30vh] laptop-l:trasnlate-y-[-35vh] scale-125 opacity-100"
           : "translate-y-0 opacity-100"

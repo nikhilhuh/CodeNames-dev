@@ -17,7 +17,7 @@ interface RulesModalProps {
 const RulesModal: React.FC<RulesModalProps> = ({ onClose }) => {
   return (
     <div
-      className={`fixed inset-0 bg-black bg-opacity-50 z-40 transition-opacity duration-300 ease-in-out opacity-100 pointer-events-auto`}
+      className={`fixed inset-0 bg-black bg-opacity-50 z-50 transition-opacity duration-300 ease-in-out opacity-100 pointer-events-auto`}
     >
       <div className="absolute top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2 bg-gray-100 z-50 w-[80vw]  max-w-[80vw] max-h-[90vh] overflow-hidden rounded-2xl">
         {/* Header */}

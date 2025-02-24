@@ -40,7 +40,7 @@ export const PlayerProvider = ({ children }: PlayerProviderProps) => {
     const updateFromStorage = () => {
       const storedNickname = localStorage.getItem("nickname");
 
-      const player = room?.players.find((player)=> player.nickname === storedNickname)
+      const player = room?.players.find((player: Player)=> player.nickname === storedNickname)
       setPlayerDetails(player || null);
     };
 
