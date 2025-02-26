@@ -2,6 +2,7 @@ import express, { Request, Response } from "express";
 import cors from "cors";
 import { io } from "../../socket/socketSetUp";
 import { rooms } from "../../utils/room";
+import { Card } from "../../models/card";
 const router = express.Router();
 
 router.use(cors({ origin: process.env.FRONTEND_URL, methods: ["POST"] }));
@@ -23,35 +24,44 @@ router.post("/end-guessing", (req: Request, res: Response) => {
     return;
   }
 
-  if(room.winner){
-    res.status(403).json({success: false, message: "Game is already over" });
+  if (room.winner) {
+    res.status(403).json({ success: false, message: "Game is already over" });
     return;
   }
 
   const player = room.players.find((p) => p.nickname === nickname);
   if (!player) {
-     res.status(400).json({ success: false, message: "Player not found" });
-     return;
+    res.status(400).json({ success: false, message: "Player not found" });
+    return;
   }
 
   if (player.role === "spymaster" || player.team !== room.turn) {
-    res.status(403).json({ success: false, message: "Only operatives of the turn team can end guessing" });
+    res
+      .status(403)
+      .json({
+        success: false,
+        message: "Only operatives of the turn team can end guessing",
+      });
     return;
   }
 
   if (!room.clueGiven) {
-    res.status(403).json({ success: false, message: "Wait for spymaster's clue" });
+    res
+      .status(403)
+      .json({ success: false, message: "Wait for spymaster's clue" });
     return;
   }
 
   room.gameLog.push({
-    nickname: nickname ,
+    nickname: nickname,
     log: "ends Guessing",
     turn: room.turn,
-   });
+  });
   room.turn = room.turn === "red" ? "blue" : "red";
   room.clueGiven = false;
   room.clue = null;
+  room.guessedWords = 0;
+  room.board.forEach((card: Card) => (card.markedBy = undefined));
 
   io.to(roomId).emit("end-guessing", roomId);
 

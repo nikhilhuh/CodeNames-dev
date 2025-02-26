@@ -1,11 +1,11 @@
 import { encryptData } from "./encryptAndDecrypt";
 
-export const updateLocalStorage = (key: string, value: any) => {
+export const updateSessionStorage = (key: string, value: any) => {
   if (key === "roomDetails") {
     const encryptedData = encryptData(JSON.stringify(value));
-    localStorage.setItem(key, encryptedData);
+    sessionStorage.setItem(key, encryptedData);
   } else {
-    localStorage.setItem(
+    sessionStorage.setItem(
       key,
       typeof value === "string" ? value : JSON.stringify(value)
     );

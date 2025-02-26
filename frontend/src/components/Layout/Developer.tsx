@@ -11,10 +11,10 @@ const Developer = () => {
         <div className="text-center font-semibold tablet:text-[1.2vw]">Nikhil Tiwari</div>
         <div className="flex items-center justify-center">
           <a href="https://github.com/nikhilhuh" target="_blank">
-            <img src={GithubLogo} alt="Github Logo" className="h-[3vw] rounded-full mix-blend-color-burn"/>
+            <img src={GithubLogo} alt="Github Logo" className="h-[3vw] rounded-full mix-blend-color-burn hover:scale-110"/>
           </a>
           <a href="https://www.linkedin.com/in/nikhilhuh?utm_source=share&utm_campaign=share_via&utm_content=profile&utm_medium=android_app" target="_blank">
-            <img src={LinkedinLogo} alt="Github Logo" className="h-[4vw] rounded-full"/>
+            <img src={LinkedinLogo} alt="Github Logo" className="h-[4vw] rounded-full hover:scale-110"/>
           </a>
         </div>
       </div>

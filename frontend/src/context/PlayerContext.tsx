@@ -38,7 +38,7 @@ export const PlayerProvider = ({ children }: PlayerProviderProps) => {
 
   useEffect(() => {
     const updateFromStorage = () => {
-      const storedNickname = localStorage.getItem("nickname");
+      const storedNickname = sessionStorage.getItem("nickname");
 
       const player = room?.players.find((player: Player)=> player.nickname === storedNickname)
       setPlayerDetails(player || null);

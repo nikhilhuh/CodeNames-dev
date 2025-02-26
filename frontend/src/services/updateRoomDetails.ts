@@ -1,6 +1,6 @@
 import { getRoomDetails } from "./api/apiCalls/getRoomDetails";
 import { apiErrorHandler } from "./api/apiErrorHandling";
-import { updateLocalStorage } from "./updateLocalStorage";
+import { updateSessionStorage } from "./updateSessionStorage";
 
 export const updateRoomDetails = async (roomId: string) => {
   try {
@@ -9,7 +9,7 @@ export const updateRoomDetails = async (roomId: string) => {
       return { success: false, message: "Failed to fetch room details" };
     }
     if ("room" in roomResponse) {
-      updateLocalStorage("roomDetails", roomResponse.room);
+      updateSessionStorage("roomDetails", roomResponse.room);
       return { success: true, message: "Completed", roomId };
     } else {
       return {

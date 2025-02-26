@@ -34,7 +34,7 @@ const PlayersDetails: React.FC = () => {
       <button
         onClick={playersClick}
         title="Players in Room"
-        className="flex gap-[1vw] tablet:gap-[0.5vw] items-center px-[2.5vw] py-[1vw] tablet:px-[1vw] tablet:py-[0.8vw] bg-yellow-400 rounded-full shadow-xl hover:bg-yellow-500 hover:scale-105 transition"
+        className="flex gap-[1vw] tablet:gap-[0.5vw] items-center px-[2.5vw] py-[1vw] tablet:px-[1vw] tablet:py-[0.6vw] laptop-sm:py-[0.5vw] bg-yellow-400 rounded-full shadow-xl hover:bg-yellow-500 hover:scale-105 transition"
       >
         <span className="hidden tablet:inline-block">Players</span> <FaUser />{" "}
         {room?.players?.length}

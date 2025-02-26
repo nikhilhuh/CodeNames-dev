@@ -28,15 +28,15 @@ const Operatives: React.FC<OperativesProps> = ({ team, handleJoin }) => {
   return (
     <>
       <div
-        className={`mt-[2px] text-[2.5vw] tablet:text-[1.2vw] laptop-l:text-[1vw] font-thin ${
+        className={`mt-1 text-[2.5vw] mobile-m:text-[2.2vw] tablet:text-[1.2vw] laptop-l:text-[1vw] font-thin ${
           team === "red" ? "text-red-400" : "text-blue-300"
         }`}
       >
         Operative(s)
       </div>
-      <div className="text-gray-100 text-[1.8vw] tablet:text-[0.9vw] laptop-l:text-[0.8vw] mt-[2px]">
+      <div className="text-gray-100 text-[1.8vw] mobile-m:text-[1.6vw] tablet:text-[0.9vw] laptop-l:text-[0.8vw] mt-0.5">
         {operatives.length > 0 ? (
-          <div className="flex flex-wrap gap-2 ">
+          <div className="flex flex-wrap gap-1 tablet:gap-2">
             {operatives.map((operative, index) => (
               <div
                 key={index}
@@ -54,7 +54,7 @@ const Operatives: React.FC<OperativesProps> = ({ team, handleJoin }) => {
         {!PlayerDetails?.role && (
           <button
             onClick={() => handleJoin("operative")}
-            className="mt-[2px] flex gap-2 items-center text-[2vw] tablet:text-[0.7vw] hover:bg-yellow-500 laptop-sm:px-4 laptop-sm:py-2 p-2 bg-yellow-400 rounded-full shadow-lg font-semibold text-black transition"
+            className="mt-0.5 flex gap-2 items-center text-[2vw] mobile-m:text-[1.8vw] tablet:text-[0.7vw] hover:scale-105 hover:bg-yellow-500 px-[2.5vw] py-[1vw] tablet:px-[1vw] tablet:py-[0.6vw] laptop-sm:py-[0.5vw] bg-yellow-400 rounded-full shadow-lg font-semibold text-black transition"
           >
             Join as Operative
           </button>

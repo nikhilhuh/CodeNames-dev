@@ -39,8 +39,8 @@ const BlueTeam: React.FC = () => {
     <div
       className={`bg-blue-600 tablet:rounded-xl laptop-l:rounded-2xl 4k:rounded-3xl tablet:shadow-md laptop-l:shadow-lg 4k:shadow-2xl p-2 laptop-sm:px-3 laptop-sm:py-2 laptop-l:px-4 4k:p-6`}
     >
-      <div className="flex gap-[3vw] justify-end items-center">
-        <div className="text-[5vw] tablet:text-[2.5vw] text-gray-100 font-bold drop-shadow-md">
+      <div className="flex gap-[8vw] tablet:gap-[3vw] items-center">
+        <div className="text-[5vw] mobile-m:text-[4vw] tablet:text-[2.5vw] text-gray-100 font-bold drop-shadow-md">
           {wordsRemaining}
         </div>
         <Blue />

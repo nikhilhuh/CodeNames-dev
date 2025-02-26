@@ -38,7 +38,7 @@ const EndGuessingButton: React.FC = () => {
       <button
         onClick={handleEndGuessing}
         title="End Guessing"
-        className="text-center font-mono font-semibold px-[1.2vw] py-[1vw] tablet:px-[0.4vw] tablet:py-[0.3vw] text-[2.5vw] tablet:text-[1.2vw]  bg-yellow-400 rounded-full shadow-md"
+        className="flex font-semibold text-[2.5vw] mobile-m:text-[2vw] tablet:text-[1vw] laptop-l:text-[0.8vw] gap-[1vw] tablet:gap-[0.5vw] items-center px-[2.5vw] py-[1vw] tablet:px-[1vw] tablet:py-[0.6vw] laptop-sm:py-[0.5vw] bg-yellow-400 rounded-full shadow-xl hover:bg-yellow-500 hover:scale-105 transition"
       >
         End Guessing
       </button>

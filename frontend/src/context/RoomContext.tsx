@@ -49,10 +49,10 @@ export const RoomProvider = ({ children }: RoomProviderProps) => {
 
   useEffect(() => {
     const updateFromStorage = () => {
-      const storedRoomId = localStorage.getItem("roomId");
+      const storedRoomId = sessionStorage.getItem("roomId");
       if (storedRoomId) setRoomId(storedRoomId);
 
-      const storedRoomDetails = localStorage.getItem("roomDetails");
+      const storedRoomDetails = sessionStorage.getItem("roomDetails");
       if (storedRoomDetails) {
         try {
           const decryptedRoomDetails = decryptData(storedRoomDetails);

@@ -8,7 +8,7 @@ const PlayersInRoom: React.FC = () => {
   return (
     <>
       <div className="text-center">Players in Room</div>
-      <div className="mt-2 flex flex-wrap gap-1 laptop-sm:gap-2">
+      <div className="mt-2 flex flex-wrap gap-0.5 laptop-sm:gap-1 4k:gap-4">
         {players.map((player, index) => (
           <div key={index} className="bg-gray-200 px-2 py-1 rounded-lg">
             {player.nickname}

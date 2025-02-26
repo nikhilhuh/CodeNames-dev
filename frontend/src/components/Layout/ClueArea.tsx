@@ -19,7 +19,7 @@ const ClueArea: React.FC = () => {
         <div className="fixed inset-0 bg-black bg-opacity-50 z-40 transition-opacity duration-500"></div>
       )}
 
-      <div className="relative flex flex-col gap-[1.5vw] tablet:gap-[0.7vw] mb-[1vw] tablet:mb-0 justify-center items-center min-h-[8vh] tablet:min-h-0 z-50">
+      <div className="relative flex flex-col gap-[1.5vw] tablet:gap-[0.7vw] mb-[1vw] tablet:mb-0 justify-center items-center min-h-[8vh] tablet:min-h-0 z-40">
         {!room.clueGiven &&
         PlayerDetails.role === "spymaster" &&
         room.turn === PlayerDetails.team ? (

@@ -1,7 +1,7 @@
 import { getRoomDetails } from "./getRoomDetails";
 import { axiosInstance } from "../../axiosInstance";
 import socket from "../../socketSetup";
-import { updateLocalStorage } from "../../updateLocalStorage";
+import { updateSessionStorage } from "../../updateSessionStorage";
 import { apiErrorHandler } from "../apiErrorHandling";
 import { Player } from "../../../utils/constants";
 
@@ -16,8 +16,8 @@ export const joinRoom = async (
     });
 
     if (response.data.success) {
-      updateLocalStorage("nickname", nickname);
-      updateLocalStorage("roomId", roomId);
+      updateSessionStorage("nickname", nickname);
+      updateSessionStorage("roomId", roomId);
       socket.emit("join-room", roomId);
 
       const roomResponse = await getRoomDetails(roomId);
@@ -27,7 +27,7 @@ export const joinRoom = async (
       }
 
       if ("room" in roomResponse) {
-        updateLocalStorage("roomDetails", roomResponse.room);
+        updateSessionStorage("roomDetails", roomResponse.room);
         return { success: true, message: "Completed" };
       } else {
         return {

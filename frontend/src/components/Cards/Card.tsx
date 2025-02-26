@@ -125,7 +125,7 @@ const Card: React.FC<{ card: wordCard }> = ({ card }) => {
           <NonRevealed card={card} />
         )}
 
-        <div className="absolute top-[10%] left-[7%] text-[0.35rem] mobile-m:text-[0.4rem] mobile-l:text-[0.5rem] tablet:text-[0.4rem] laptop-sm:text-[0.5rem] laptop-l:text-[0.7rem] 4k:text-[1.5rem] flex flex-wrap gap-1">
+        <div className="absolute top-[8%] left-[7%] text-[1.5vw] mobile-m:text-[0.4rem] mobile-l:text-[0.5rem] tablet:text-[0.4rem] laptop-sm:text-[0.5rem] laptop-l:text-[0.7rem] 4k:text-[1.5rem] flex flex-wrap gap-y-[0.2vw] gap-x-[0.5vw] laptop-sm:gap-[0.3vw] max-w-[80%] z-30">
           {card.markedBy?.map((marker, index) => (
             <span className="bg-red-600 px-[2px]" key={index}>
               {marker}
@@ -140,15 +140,16 @@ const Card: React.FC<{ card: wordCard }> = ({ card }) => {
           room.winner === null && (
             <div
               onClick={(event) => handleCardReveal(event)}
-              className="absolute top-[2%] right-[2%] p-1 z-10 bg-yellow-400 rounded-full shadow-lg cursor-pointer"
+              title="Reveal Card"
+              className="absolute top-[2%] right-[2%] p-1 z-30 bg-yellow-400 rounded-full shadow-lg cursor-pointer hover:scale-105"
             >
-              <FaRegHandPointer className="text-[2.5vw] tablet:text-[1.5vw]" />
+              <FaRegHandPointer className="text-[3vw] mobile-l:text-[2.5vw] tablet:text-[1.5vw]" />
             </div>
           )}
 
         {!card.revealed && (
           <div
-            className={`absolute top-[59%] mobile-m:top-[60%] mobile-l:top-[61%] left-1/2 transform -translate-x-1/2 flex items-center justify-center text-center uppercase
+            className={`absolute top-[59%] mobile-m:top-[60%] mobile-l:top-[60%] left-1/2 transform -translate-x-1/2 flex items-center justify-center text-center uppercase
             text-[2vw] tablet:text-[1vw] font-bold ${
               card.color === "black" &&
               (PlayerDetails?.role === "spymaster" || room.winner)

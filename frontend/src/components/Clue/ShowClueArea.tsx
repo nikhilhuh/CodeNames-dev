@@ -40,14 +40,14 @@ const ShowClueArea: React.FC<ShowClueAreaProps> = ({
     >
       <div
         className={`uppercase border-[0.3vw] rounded-md laptop-l:rounded-lg ${
-          room?.turn === "red" ? "border-red-200" : "border-blue-200"
+          room?.turn === "red" ? "border-red-400" : "border-blue-400"
         } bg-white px-[1.2vw] py-[1vw] tablet:px-[0.4vw] tablet:py-[0.3vw]`}
       >
         {room?.clue?.clueWord}
       </div>
       <div
         className={`uppercase border-[0.3vw] rounded-md laptop-l:rounded-lg ${
-          room?.turn === "red" ? "border-red-200" : "border-blue-200"
+          room?.turn === "red" ? "border-red-400" : "border-blue-400"
         } bg-white px-[1.2vw] py-[1vw] tablet:px-[0.4vw] tablet:py-[0.3vw]`}
       >
         {room?.clue?.clueNumber}

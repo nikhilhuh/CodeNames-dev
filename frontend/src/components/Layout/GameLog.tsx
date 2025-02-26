@@ -20,7 +20,7 @@ const GameLog: React.FC = () => {
       </div>
 
       {/* Scrollable Logs Container */}
-      <div className="flex flex-col gap-[1px] tablet:gap-[2px] tablet:px-[0.1vw] mt-[2px] overflow-y-auto flex-1">
+      <div className="flex flex-col gap-[1px] tablet:gap-[2px] px-[0.4vw] mt-[2px] mb-1.5 overflow-y-auto">
         {gameLogs?.map((log, index) => (
           <div
             key={index}
@@ -39,9 +39,7 @@ const GameLog: React.FC = () => {
                 {log.nickname}
               </span>
             )}
-            <span className={`text-[1.8vw] tablet:text-[0.8vw]`}>
-              {log.log}
-            </span>
+            <span className={`text-[1.8vw] tablet:text-[0.8vw]`}>{log.log}</span>
             {log.clue && (
               <span className="font-semibold bg-gray-300 p-[0.4vw] tablet:p-[0.1vw] rounded-sm uppercase">
                 {log.clue.clueWord} {log.clue.clueNumber}

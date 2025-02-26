@@ -68,7 +68,7 @@ const NumberDropdown: React.FC<{ onSelect: (num: number) => void }> = ({
   onSelect,
 }) => {
   return (
-    <div className="absolute bottom-[120%] left-1/2 transform -translate-x-1/2 text-[3vw] tablet:text-[1.3vw] bg-white rounded-lg 4k:rounded-xl shadow-lg overflow-hidden z-10">
+    <div className="absolute bottom-[120%] left-1/2 transform -translate-x-1/2 text-[3vw] tablet:text-[1.3vw] bg-white rounded-lg 4k:rounded-xl shadow-lg overflow-hidden z-40">
       <div className="flex gap-[0.5vw] px-[0.5vw] py-[0.3vw]">
         {Array.from({ length: 10 }, (_, index) => (
           <div
