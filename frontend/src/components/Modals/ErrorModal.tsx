@@ -11,7 +11,7 @@ const ErrorModal: React.FC<ErrorModalProps> = ({ error, onClose }) => {
     <div
       className="fixed inset-0 bg-black bg-opacity-50 z-40 flex items-center justify-center"
     >
-      <div className="absolute top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2 bg-yellow-500 z-50 max-h-[60vh] w-max max-w-[90%] mobile-m:max-w-[75%] mobile-l:max-w-[65%] tablet:max-w-[55%] laptop-sm:max-w-[40%] laptop-l:max-w-[30%] 4k:max-w-[25%] overflow-hidden rounded-xl laptop-l:rounded-3xl p-4 flex flex-col items-center gap-[2.5vw] tablet:gap-[1.5vw] laptop-sm:gap-[1vw] laptop-l:gap-[0.8vw] shadow-2xl drop-shadow-2xl">
+      <div className="absolute top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2 bg-yellow-500 z-50 max-h-[60vh] min-w-[90%] mobile-m:min-w-[75%] mobile-l:min-w-[65%] tablet:min-w-[55%] laptop-sm:min-w-[40%] laptop-l:min-w-[30%] 4k:min-w-[25%] max-w-[90%] mobile-m:max-w-[75%] mobile-l:max-w-[65%] tablet:max-w-[55%] laptop-sm:max-w-[40%] laptop-l:max-w-[30%] 4k:max-w-[25%] overflow-hidden rounded-xl laptop-l:rounded-3xl p-4 flex flex-col items-center gap-[2.5vw] tablet:gap-[1.5vw] laptop-sm:gap-[1vw] laptop-l:gap-[0.8vw] shadow-2xl drop-shadow-2xl">
         <div className="flex flex-col items-center">
           <div className="text-red-500 font-semibold text-[8vw] tablet:text-[5vw] laptop-sm:text-[3vw] laptop-l:text-[2.5vw]">
             <MdError />
