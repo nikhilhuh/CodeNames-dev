@@ -1,6 +1,6 @@
 import { useNavigate } from "react-router-dom";
 
-const Error404 = () => {
+const Error404: React.FC = () => {
   const navigate = useNavigate();
 
   const handleGoBack = () => {

@@ -3,7 +3,7 @@ import Room from "../pages/Room";
 import Error404 from "../pages/Error404";
 import MainGamePage from "../pages/MainGamePage";
 
-const AppRoutes = () => {
+const AppRoutes: React.FC = () => {
   return (
       <Routes>
         <Route path="/" element={<Room />} />
